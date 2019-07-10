@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <script src="jquery.js"> </script>
+        <link rel="stylesheet" type="text/css" href="upload.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"> </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <h1>Upload a Json Array File </h1>
+        <input type="file" id="selectFiles" value="Import" /><br />
+        <button id="import">Import</button>
+        
+        <h2> Preview of the Json Array </h2>
+        <textarea id="result"> </textarea>
+
+        <br>
+
+        <h2>Data extracted from a JSON and converted to an HTML table.</h2>
+        <label for= "search" id="hanap"> Search </label>
+        <input type="text" id="search" name= "search" placeholder="Search data here....."></input>
+        <div id="showData"></div>
+        <div id="dataNumber"> </div>
+        
+        <script> 
+        $(document).ready(function() {
+            
+            document.getElementById("selectFiles").innerHTML = "No File selected";
+            
+            //GETS THE FILENAME OF THE FILE UPLOADED
+            document.getElementById('selectFiles').onchange = uploadOnChange;
+            
+            var filename = null;
+            var arrayName = null;                
+
+            function uploadOnChange() {
+                filename = this.value;
+                var lastIndex = filename.lastIndexOf("\\");
+                if (lastIndex >= 0) {
+                    filename = filename.substring(lastIndex + 1);
+                }
+            }   
+
+
+            //SHOWS THE FILE ON THE IMPORT TEXTFIELD
+            document.getElementById('import').onclick = function() {
+                var files = document.getElementById('selectFiles').files;
+               
+                console.log(files);
+                if (files.length <= 0) {
+                    return false;
+                }
+                
+                var fr = new FileReader();
+                
+                fr.onload = function(e) { 
+                console.log(e);
+                    var result = JSON.parse(e.target.result);
+                    var formatted = JSON.stringify(result, null, 2);
+                    document.getElementById('result').value = formatted;
+                }
+                
+                fr.readAsText(files.item(0));
+
+                //ERROR CHECKING FOR FILE EXTENSION
+                var ext = filename.substring(filename.lastIndexOf('.') + 1);                
+                if (ext != "json"){
+                    alert("Please enter a .json file only");
+                }
+                else{
+                    alert("Your file is loading now!");
+                }
+
+                 //TABLEFORM OF DATA
+                $(document).ready(function () {
+                    $.getJSON(filename, function (data) {
+                        var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+                        
+                        $.each(data.sales, function (index, value) {
+                            arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
+                        });
+                        document.getElementById("dataNumber").innerHTML = "Reading from a total of " + arrItems.length  + " entries.";
+                        // EXTRACT VALUE FOR TABLE HEADER.
+                        var col = [];
+                        for (var i = 0; i < arrItems.length; i++) {
+                            for (var key in arrItems[i]) {
+                                if (col.indexOf(key) === -1) {
+                                    col.push(key);
+                                }
+                            }
+                        }
+
+                        // CREATE DYNAMIC TABLE.
+                        var table = document.createElement("table");
+                        table.id = "krustykrab_table";
+
+                        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+                        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+                        for (var i = 0; i < col.length; i++) {
+                            var th = document.createElement("th");      // TABLE HEADER.
+                            th.innerHTML = col[i];
+                            tr.appendChild(th);
+                        }
+
+                        // ADD JSON DATA TO THE TABLE AS ROWS.
+                        for (var i = 0; i < arrItems.length; i++) {
+
+                            tr = table.insertRow(-1);
+
+                            for (var j = 0; j < col.length; j++) {
+                                var tabCell = tr.insertCell(-1);
+                                tabCell.innerHTML = arrItems[i][col[j]];
+                            }
+                        }
+
+                        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+                        var divContainer = document.getElementById("showData");
+                        divContainer.innerHTML = "";
+                        divContainer.appendChild(table);
+                    });
+                    
+                    //SEARCH ALGORITHM
+                    
+                    $("#search").on("keyup", function(){
+                        var value = $(this).val().toLowerCase();
+                        $("table tr").filter(function(index) {
+                            if(index>0){
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            }
+                        });
+
+                    });
+                   
+                });
+
+            }
+
+        });
+            
+        </script>
+
+    
+    </body>
+</html>

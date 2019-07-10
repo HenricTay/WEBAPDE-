@@ -1,0 +1,227 @@
+{
+    "sales": 
+      [{
+          "datetime": "2019-05-27 08:02:58", 
+          "burger" : "Krusty Combo", 
+          "species" : "leatherback turtle"
+      },
+      {
+          "datetime": "2019-05-27 08:04:47", 
+          "burger" : "Krabby Pattie", 
+          "species" : "salmon"
+      },
+      {
+          "datetime": "2019-05-27 08:06:37", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "seahorse"
+      },{
+          "datetime": "2019-05-27 08:08:35", 
+          "burger" : "Krabby Pattie", 
+          "species" : "sea lion"
+      },{
+          "datetime": "2019-05-27 08:10:32", 
+          "burger" : "Krabby Pattie", 
+          "species" : "sea lion"
+      },{
+          "datetime": "2019-05-27 08:12:42", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 08:14:48", 
+          "burger" : "Krabby Pattie", 
+          "species" : "coral"
+      },{
+          "datetime": "2019-05-27 08:16:22", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 08:17:55", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "seahorse"
+      },{
+          "datetime": "2019-05-27 08:20:44", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 08:22:43", 
+          "burger" : "Krabby Pattie", 
+          "species" : "salmon"
+      },{
+          "datetime": "2019-05-27 08:24:50", 
+          "burger" : "Krusty Combo", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 08:27:32", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "salmon"
+      },{
+          "datetime": "2019-05-27 08:30:57", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 08:32:40", 
+          "burger" : "Krabby Pattie", 
+          "species" : "sea lion"
+      },{
+          "datetime": "2019-05-27 08:36:03", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 08:39:15", 
+          "burger" : "Krusty Combo", 
+          "species" : "seahorse"
+      },{
+          "datetime": "2019-05-27 08:41:06", 
+          "burger" : "Krabby Pattie", 
+          "species" : "coral"
+      },{
+          "datetime": "2019-05-27 08:43:58", 
+          "burger" : "Krusty Combo", 
+          "species" : "sea lion"
+      },{
+          "datetime": "2019-05-27 08:45:52", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 08:48:09", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 08:50:14", 
+          "burger" : "Krabby Pattie", 
+          "species" : "giant clam"
+      },{
+          "datetime": "2019-05-27 08:52:01", 
+          "burger" : "Krabby Pattie", 
+          "species" : "seahorse"
+      },{
+          "datetime": "2019-05-27 08:55:10", 
+          "burger" : "Krabby Pattie", 
+          "species" : "sea lion"
+      },{
+          "datetime": "2019-05-27 08:56:54", 
+          "burger" : "Krabby Pattie", 
+          "species" : "sea lion"
+      },{
+          "datetime": "2019-05-27 08:59:22", 
+          "burger" : "Krusty Combo", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 09:01:02", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 09:02:58", 
+          "burger" : "Krabby Pattie", 
+          "species" : "gray whale"
+      },{
+          "datetime": "2019-05-27 09:05:57", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 09:08:28", 
+          "burger" : "Krusty Combo", 
+          "species" : "coral"
+      },{
+          "datetime": "2019-05-27 09:10:19", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "giant clam"
+      },{
+          "datetime": "2019-05-27 09:13:35", 
+          "burger" : "Krabby Pattie", 
+          "species" : "sea lion"
+      },{
+          "datetime": "2019-05-27 09:15:43", 
+          "burger" : "Krabby Pattie", 
+          "species" : "giant clam"
+      },{
+          "datetime": "2019-05-27 09:17:35", 
+          "burger" : "Krabby Pattie", 
+          "species" : "seahorse"
+      },{
+          "datetime": "2019-05-27 09:20:46", 
+          "burger" : "Krusty Combo", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 09:22:34", 
+          "burger" : "Krabby Pattie", 
+          "species" : "salmon"
+      },{
+          "datetime": "2019-05-27 09:24:21", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "gray whale"
+      },{
+          "datetime": "2019-05-27 09:27:47", 
+          "burger" : "Krusty Combo", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 09:29:18", 
+          "burger" : "Krabby Pattie", 
+          "species" : "giant clam"
+      },{
+          "datetime": "2019-05-27 09:32:38", 
+          "burger" : "Krabby Pattie", 
+          "species" : "salmon"
+      },{
+          "datetime": "2019-05-27 09:35:00", 
+          "burger" : "Krabby Pattie", 
+          "species" : "gray whale"
+      },{
+          "datetime": "2019-05-27 09:37:01", 
+          "burger" : "Krabby Pattie", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 09:39:00", 
+          "burger" : "Krabby Pattie", 
+          "species" : "giant clam"
+      },{
+          "datetime": "2019-05-27 09:40:57", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "salmon"
+      },{
+          "datetime": "2019-05-27 09:43:11", 
+          "burger" : "Krabby Pattie", 
+          "species" : "coral"
+      },{
+          "datetime": "2019-05-27 09:45:00", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 09:47:55", 
+          "burger" : "Krabby Pattie", 
+          "species" : "coral"
+      },{
+          "datetime": "2019-05-27 09:50:13", 
+          "burger" : "Krabby Pattie", 
+          "species" : "seahorse"
+      },{
+          "datetime": "2019-05-27 09:52:17", 
+          "burger" : "Krabby Pattie", 
+          "species" : "giant clam"
+      },{
+          "datetime": "2019-05-27 09:54:12", 
+          "burger" : "Krusty Combo", 
+          "species" : "leatherback turtle"
+      },{
+          "datetime": "2019-05-27 09:56:16", 
+          "burger" : "Krusty Combo", 
+          "species" : "giant clam"
+      },{
+          "datetime": "2019-05-27 09:59:12", 
+          "burger" : "Krabby Pattie", 
+          "species" : "coral"
+      },{
+          "datetime": "2019-05-27 10:01:27", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "sea lion"
+      },{
+          "datetime": "2019-05-27 10:03:24", 
+          "burger" : "Krusty Deluxe", 
+          "species" : "giant clam"
+      },{
+          "datetime": "2019-05-27 10:05:33", 
+          "burger" : "Krusty Combo", 
+          "species" : "leatherback turtle"
+      }
+    ]
+}
