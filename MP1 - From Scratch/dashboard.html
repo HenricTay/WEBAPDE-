@@ -1,27 +1,35 @@
 <html>
     <head>
         <title>Krusty Korp. Dashboard</title>
-       
+        <!-- /************************************ TABLE ************************************/ -->
+        <!-- <script src="jquery.js"> </script>
+        <link rel="stylesheet" type="text/css" href="upload.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"> </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> -->
+
         <style>
         /************************************ NAVBAR ************************************/
         body,html{
             margin: 0;
             padding: 0;
+
         }
         .header{
             width:186px;
             height:100%;
             background-color:dodgerblue;
             color: white; /* Black text color */
-            display: block; /* Make the links appear below each other */
+            display: inline-block; /* Make the links appear below each other */
             padding: 12px; /* Add some padding */
             text-decoration: none; /* Remove underline from links */
+            position: fixed;
         }
         h1{
             padding: 3px;
             float: left;
             margin-left: 2%;
-            margin-top: 10px;
+            margin-top: 190px;
             font-family: spongeBob;
             color: #ffff;
         }
@@ -54,7 +62,8 @@
         img{
             width:150px;
             margin-left: 22px;
-            position: relative;
+            position: absolute;
+            display: block;
         }
         @font-face{
             font-family: spongeBob;
@@ -81,15 +90,32 @@
             display: block;
         }
         /***********************************************************************************/
+        /*********************************MAIN BOXES****************************************/
+
+        .innerbox{
+            position:absolute;
+            width: 80%;
+            height: 100%;
+            border-style: solid;
+            border-color: black;
+            color: black;
+            margin: 0 0 0 21.5%;
+            display: inline;
+        }
+
+        .rounded{
+            border-radius:10px;
+        }
         </style>
     </head>
 
 
-    <body>
+    <body style="display:block">
+        <!------------------------ NAVBAR -------------------------->
         <div class="header">
-            <img src="krustykrabLogo.png">
                 <h1>KRAB<span> KORPORATION</span></h1>
                     <nav>
+                        <img src="krustykrabLogo.png">
                         <ul>
                             <li><a href="charts.html">CHARTS</a></li>
                             <li><a href="tables.html">TABLES</a></li>
@@ -103,7 +129,12 @@
                             </li>
                         </ul>
                     </nav>
-            </header>
+                </header>
+            <!------------------------ TABLE -------------------------->
+        </div>
+
+        <div class="innerbox">
+                hello
         </div>
     </body>
 </html>
