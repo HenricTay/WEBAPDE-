@@ -7,23 +7,27 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
         <style>
-
+            @font-face{
+                font-family: spongeBob;
+                src: url("Some Time Later.otf")
+            }
             
+            .rounded{
+                border-radius: 10px;
+                box-shadow: 0px;
+            }
+
         </style>
     </head>
 
     <body>
-        <h1>Upload a Json Array File </h1>
-        <input type="file" id="selectFiles" value="Import" /><br />
-        <button id="import">Import</button>
-        
-        <h2> Preview of the Json Array </h2>
-        <textarea id="result"> </textarea>
+        <h1 style="font-family: spongeBob">Upload a Json Array File </h1>
+        <input class="rounded" type="file" id="selectFiles" value="Import" style="font-family: spongeBob"><br />
+        <button class="rounded" id="import" style="font-family: spongeBob">Import</button>
 
         <br>
-
-        <h2>Data extracted from a JSON and converted to an HTML table.</h2>
-        <label for= "search" id="hanap"> Search </label>
+        <h2 style="font-family: spongeBob">Customer Data</h2>
+        <label for= "search" id="hanap" style="font-family: spongeBob"> Search </label>
         <input type="text" id="search" name= "search" placeholder="Search data here....."></input>
         <div id="showData"></div>
         <div id="dataNumber"> </div>
