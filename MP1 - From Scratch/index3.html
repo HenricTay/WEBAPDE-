@@ -4,19 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Tables</title>
     <script
 			  src="https://code.jquery.com/jquery-3.4.1.min.js"
 			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 			  crossorigin="anonymous">
     </script>
-<script src = "https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <style>
+            /************************************ NAVBAR ************************************/
+            body,html{
+                margin: 0;
+                padding: 0;
+    
+            }
+            .header{
+                width:186px;
+                height:100%;
+                background-color:dodgerblue;
+                color: white; /* Black text color */
+                display: inline-block; /* Make the links appear below each other */
+                padding: 12px; /* Add some padding */
+                text-decoration: none; /* Remove underline from links */
+                position: fixed;
+            }
+            .titleBar{
+                padding: 3px;
+                float: left;
+                margin-left: 2%;
+                margin-top: 190px;
+                font-family: spongeBob;
+                color: #ffff;
+            }
+            span{
+                color: #ffffff;
+            }
+            ul{
+                width: auto;
+                float: right;
+                margin-top: 8px;
+            }
+            li{
+                display: inline-block;
+                padding: 15px 20px;
+                font-family: spongeBob;
+                color: #ffff;
+            }
+            a{
+                text-align:center;
+                color: #ffff;
+                text-decoration: none;
+                font-family: spongeBob;
+                font-size: 25px;
+            }
+            a:hover{
+                color: #F0C330;
+                transition: 0.5s;
+                cursor: pointer;
+            }
+            img{
+                width:150px;
+                margin-left: 22px;
+                position: absolute;
+                display: block;
+            }
+            @font-face{
+                font-family: spongeBob;
+                src: url("Some Time Later.otf");
+            }
+            /***********************************************************************************/
+
+             /**************************************DROPDOWN*************************************/
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                padding: 12px 16px;
+                z-index: 1;
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+    </style>
 </head>
 <body>
-    <div style = "width: 40%">
-        <canvas id = "chart" width = "150px" height ="150px"></canvas>
+     <!------------------------ NAVBAR -------------------------->
+     <div class="header">
+            <h1 class="titleBar">KRAB<span> KORPORATION</span></h1>
+                <nav>
+                    <img src="krustykrabLogo.png">
+                    <ul>
+                        <li><a href="dashboard.html">CHARTS</a></li>
+                        <li><a href="index3.html">TABLES</a></li>
+                        <li><a href="login2.html">Log Out</a</li>
+                    </ul>
+                </nav>
+            </header>
     </div>
-    <div style = "width: 40%">
+
+    <div style = "width: 40%; margin-left: 300px; margin-top: 50px;">
+        <h1 style="font-family: spongeBob"> BURGERS SOLD</h1>
+        <canvas id = "chart" width = "150px" height ="150px"></canvas>
+        <br>
+        <h1 style="font-family: spongeBob"> CUSTOMER SPECIES</h1>
+    </div>
+    
+    <div style = "width: 40%; margin-left: 300px; margin-top: 50px;">
         <canvas id = "chart2" width = "150px" height ="150px"></canvas>
     </div>
     
