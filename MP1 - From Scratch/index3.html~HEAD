@@ -13,59 +13,17 @@
 <script src = "https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 </head>
 <body>
-    <h1>Upload your file!</h1>
-    <input type="file" id="selectFiles" value="Import" /><br /><br />
-    <button id="import">Import</button>
     <div style = "width: 40%">
         <canvas id = "chart" width = "150px" height ="150px"></canvas>
     </div>
     <div style = "width: 40%">
         <canvas id = "chart2" width = "150px" height ="150px"></canvas>
     </div>
-    <div style = "width: 40%">
-            <canvas id = "chart3" width = "150px" height ="150px"></canvas>
-    </div>
     
     <script>
     
-    $(document).ready(function() {
-            
-            document.getElementById("selectFiles").innerHTML = "No File selected";
-            
-            //GETS THE FILENAME OF THE FILE UPLOADED
-            document.getElementById('selectFiles').onchange = uploadOnChange;
-            
-            var filename = null;
-            var arrayName = null;                
-
-            function uploadOnChange() {
-                filename = this.value;
-                var lastIndex = filename.lastIndexOf("\\");
-                if (lastIndex >= 0) {
-                    filename = filename.substring(lastIndex + 1);
-                }
-            }   
-            
-            //SHOWS THE FILE ON THE IMPORT TEXTFIELD
-            document.getElementById('import').onclick = function() {
-                var files = document.getElementById('selectFiles').files;
-
-                //ALERT THE FILENAME
-                alert(filename);
-
-                //ERROR CHECKING FOR FILE EXTENSION
-                var ext = filename.substring(filename.lastIndexOf('.') + 1);                
-                if (ext != "json"){
-                    alert("Please enter a .json file only");
-                }
-                else{
-                    alert("Your file is loading now!");
-                }
-            
-
-       
-        
-     async function readyy(){ // main function medyo wrong
+    
+     async function ready(){ // main function medyo wrong
             var burger_sales_name = [];
             var burger_sales_numbers = [];
             var species_sales_name = [];
@@ -74,14 +32,9 @@
             var everything_species_names = [];
             var everything_species_numbers = [];
             var x = [];
-            var j = [];
-            var z = [];
-            var k = [];
-            var h = [];
             var y;
-            
-            $.getJSON(filename, function(data){
-                alert("hloo");
+            var z = [];
+            $.getJSON("krustykrab_array.json", function(data){
             $.each(data.burger_sales, function(key,value)
             {
                 //console.log(key, value);
@@ -113,38 +66,21 @@
             
             })
 
-            $.each(data.burger_by_species, function(key, value) /* Traverses Burger_by_species or Object 
+            $.each(data.sales, function(key, value) /* Traverses Burger_by_species or Object 
                                                                 {"Krusty Combo" : Object {"leatherback" : 518, "salmon":198}", "Krabby Pattie" */
             {
                 //console.log("Hi");
                 //console.log(key); // TITLE
                 //console.log(value); // should be Object {"leatherback" : 518, "salmon":198}
                // console.log(key + " " + value)  
-                j.push(key); //Burger Names
-                y = value; //Getting the Nested JSON Object into a variable 
-                
+                y = value; //Getting the Nested JSON Object into a variable
                 $.each(y, function(key, value) 
                 {
-                    x.push(key); //Species Name
-                    z.push(value); // Number bought per Species 
-                    console.log(key + " dsa " + value)
                 })
-                /*$.each(y, function(key, value) 
-                {
-                    x.push(key); //Species Name
-                    z.push(value); // Number bought per Species 
-                    console.log(key + " dsa " + value)
-                })
-                $.each(y, function(key, value) 
-                {
-                    j.push(key + ""); //Species Name
-                    h.push(value); // Number bought per Species 
-                    console.log(key + " dsa " + value)
-                })*/
             })
             //console.log(data.burger_by_species)
         });
-        return {burger_sales_name,burger_sales_numbers,species_sales_name,species_sales_numbers,x,everything_burger_names,everything_species_names,everything_species_numbers, x, z, j};
+        return {burger_sales_name,burger_sales_numbers,species_sales_name,species_sales_numbers,x,everything_burger_names,everything_species_names,everything_species_numbers};
     }
     
     async function form(){ // new solution, let's see
@@ -152,11 +88,10 @@
             var objBurger = [];
             var objSpecies= [];
             var myObj = {};
-            var thirdChart = [];
             var y;
             var x = [];
             var z;
-            $.getJSON("/krustykrab_array.json", function(data){
+            $.getJSON("krustykrab_array.json", function(data){
            
             $.each(data.sales, function(key, value) /* Traverses Burger_by_species or Object 
                                                                 {"Krusty Combo" : Object {"leatherback" : 518, "salmon":198}", "Krabby Pattie" */
@@ -182,30 +117,20 @@
            // console.log(objBurger)
             //console.log(objSpecies)
             for(i=0; i< objBurger.length; i++){
-                 myObj = {"datetime": objDatetime[i], "burger": objBurger[i], "species":objSpecies[i]}
-            //console.log(myObj)
+            myObj = {"datetime": objDatetime[i], "burger": objBurger[i], "species":objSpecies[i]}
+            console.log(myObj)
             }
-            var burger_count = 0;
-            for(j=0; j< objBurger.length; j++){
-                    if(myObj.burger === "Krusty Combo")
-                        thirdChart.push(myObj.species)
-                    else if(myObj.burger === "Krabby Pattie")
-                        thirdChart.push(myObj.species)
-                    else
-                        thirdChart.push(myObj.species)
-                i++;
-                }
-            console.log(thirdChart[0])
+
         });
-        return {objDatetime, objBurger, objSpecies};
+        return myObj;
     }
     
     chartIt();
     chartIt2(); 
-    chartIt3();
+    //chartIt3();
     
     async function chartIt(){ //1st chart
-        const data = await readyy();  
+        const data = await ready();  
             //console.log(data.burger_sales_name) 
         const ctx = document.getElementById('chart').getContext('2d');
         const myChart = new Chart(ctx, {
@@ -237,7 +162,7 @@
 }
     
     async function chartIt2(){ // 2nd chart
-        const data = await readyy();  
+        const data = await ready();  
         
         const ctx = document.getElementById('chart2').getContext('2d');
         const myChart = new Chart(ctx, {
@@ -268,48 +193,30 @@
         });
     }
 
-
     async function chartIt3(){ // 3rd chart di pa tapos
-        const data = await readyy();  
-        const ctx = document.getElementById('chart3').getContext('2d');
-        console.log(" mine :" + data.z + " " + data.x)
+        const data = await form();  
+        const ctx = document.getElementById('chart2').getContext('2d');
+        console.log(" mine")
         const myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
+        
         data: {
-            labels: data.x,
+            labels: data.burger,
             datasets: [
                 {
-                label: data.j,
+                label: data.burger,
                 fill: false,
-                data: data.z,
-                backgroundColor: ['rgba(0,255,0,1)',  'rgba(255,255,0,1)',  'rgba(0,0,255,1)'] // CHANGE COLOR OF BARS HERE
-                },
-                {
-                label: data.j,
-                fill: false,
-                data: data.z,
-                backgroundColor: ['rgba(0,255,0,1)',  'rgba(255,255,0,1)',  'rgba(0,0,255,1)'] // CHANGE COLOR OF BARS HERE
+                data: data.burger,
+                backgroundColor: ['rgba(0,255,0,1)',  'rgba(255,255,0,1)',  'rgba(0,0,255,1)']
                 },
             ]
         },
-        options: {
-            legend: {
-                 display: false
-                },
-            tooltips: {
-            callbacks: {
-                    label: function(tooltipItem) {
-                  return tooltipItem.yLabel;
-           }
-            }
-        }
-    }   
-        });
-    
-    }
-    }
-});
+        options:{
 
-</script>
+        }
+        });
+    }
+
+    </script>
 </body>
 </html>
