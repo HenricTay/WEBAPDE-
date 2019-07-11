@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous">
+    </script>
+<script src = "https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+</head>
+<body>
+    <div style = "width: 40%">
+        <canvas id = "chart" width = "150px" height ="150px"></canvas>
+    </div>
+    <div style = "width: 40%">
+        <canvas id = "chart2" width = "150px" height ="150px"></canvas>
+    </div>
+    
+    <script>
+    
+    
+     async function ready(){ // main function medyo wrong
+            var burger_sales_name = [];
+            var burger_sales_numbers = [];
+            var species_sales_name = [];
+            var species_sales_numbers = [];
+            var everything_burger_names = [];
+            var everything_species_names = [];
+            var everything_species_numbers = [];
+            var x = [];
+            var y;
+            var z = [];
+            $.getJSON("krustykrab_array.json", function(data){
+            $.each(data.burger_sales, function(key,value)
+            {
+                //console.log(key, value);
+               
+                burger_sales_name.push(key);
+                burger_sales_numbers.push(value);
+            })
+            $.each(data.species_sales, function(key, value)
+            {
+                //console.log(key,value);
+                species_sales_name.push(key);
+                species_sales_numbers.push(value);
+            })
+            $.each(data.burger_by_species, function(key, value) /* Traverses Burger_by_species or Object 
+                                                                {"Krusty Combo" : Object {"leatherback" : 518, "salmon":198}", "Krabby Pattie" */
+            {
+                //console.log("Hi");
+                //console.log(key); // TITLE
+                //console.log(value); // should be Object {"leatherback" : 518, "salmon":198}
+                var items = [key,value]
+                everything_burger_names = key;     
+                y = value; //Getting the Nested JSON Object into a variable
+                $.each(y, function(key, value){
+                //    console.log("Hi2");
+                  //  console.log(key,value + " tangina");
+                    everything_species_names.push(key);
+                    everything_species_numbers.push(value);
+                })
+            
+            })
+
+            $.each(data.sales, function(key, value) /* Traverses Burger_by_species or Object 
+                                                                {"Krusty Combo" : Object {"leatherback" : 518, "salmon":198}", "Krabby Pattie" */
+            {
+                //console.log("Hi");
+                //console.log(key); // TITLE
+                //console.log(value); // should be Object {"leatherback" : 518, "salmon":198}
+               // console.log(key + " " + value)  
+                y = value; //Getting the Nested JSON Object into a variable
+                $.each(y, function(key, value) 
+                {
+                })
+            })
+            //console.log(data.burger_by_species)
+        });
+        return {burger_sales_name,burger_sales_numbers,species_sales_name,species_sales_numbers,x,everything_burger_names,everything_species_names,everything_species_numbers};
+    }
+    
+    async function form(){ // new solution, let's see
+            var objDatetime = [];
+            var objBurger = [];
+            var objSpecies= [];
+            var myObj = {};
+            var y;
+            var x = [];
+            var z;
+            $.getJSON("krustykrab_array.json", function(data){
+           
+            $.each(data.sales, function(key, value) /* Traverses Burger_by_species or Object 
+                                                                {"Krusty Combo" : Object {"leatherback" : 518, "salmon":198}", "Krabby Pattie" */
+            {
+                //console.log("Hi");
+                //console.log(key); // TITLE
+                //console.log(value); // should be Object {"leatherback" : 518, "salmon":198}
+               // console.log(key + " " + value)  
+                y = value; //Getting the Nested JSON Object into a variable
+                $.each(y, function(key, value) 
+                {
+                    x = value; //Getting the Nested JSON Object into a variable
+                    if(key === "datetime")
+                        objDatetime.push(value);
+                    else if(key === "burger")
+                        objBurger.push(value)
+                    else if(key === "species")
+                        objSpecies.push(value)
+                })
+
+            })
+            //console.log(data.burger_by_species)
+           // console.log(objBurger)
+            //console.log(objSpecies)
+            for(i=0; i< objBurger.length; i++){
+            myObj = {"datetime": objDatetime[i], "burger": objBurger[i], "species":objSpecies[i]}
+            console.log(myObj)
+            }
+
+        });
+        return myObj;
+    }
+    
+    chartIt();
+    chartIt2(); 
+    //chartIt3();
+    
+    async function chartIt(){ //1st chart
+        const data = await ready();  
+            //console.log(data.burger_sales_name) 
+        const ctx = document.getElementById('chart').getContext('2d');
+        const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: data.burger_sales_name,
+            datasets: [
+                {
+                label: data.burger_sales_name,
+                fill: false,
+                data: data.burger_sales_numbers,
+                backgroundColor: ['rgba(0,255,0,1)',  'rgba(255,255,0,1)',  'rgba(0,0,255,1)']
+                },
+            ]
+        },
+        options: {
+            legend: {
+                display: false
+                },
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                    return tooltipItem.yLabel;
+                                        }
+                }
+            }       
+        }       
+    });
+}
+    
+    async function chartIt2(){ // 2nd chart
+        const data = await ready();  
+        
+        const ctx = document.getElementById('chart2').getContext('2d');
+        const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: data.species_sales_name,
+            datasets: [
+                {
+                label: data.species_sales_name,
+                fill: false,
+                data: data.species_sales_numbers,
+                backgroundColor: ['rgba(0,255,0,1)',  'rgba(255,255,0,1)',  'rgba(0,0,255,1)'] // CHANGE COLOR OF BARS HERE
+                },
+            ]
+        },
+    options: {
+    legend: {
+        display: false
+    },
+    tooltips: {
+        callbacks: {
+           label: function(tooltipItem) {
+                  return tooltipItem.yLabel;
+           }
+        }
+    }
+    }   
+        });
+    }
+
+    async function chartIt3(){ // 3rd chart di pa tapos
+        const data = await form();  
+        const ctx = document.getElementById('chart2').getContext('2d');
+        console.log(" mine")
+        const myChart = new Chart(ctx, {
+        type: 'bar',
+        
+        data: {
+            labels: data.burger,
+            datasets: [
+                {
+                label: data.burger,
+                fill: false,
+                data: data.burger,
+                backgroundColor: ['rgba(0,255,0,1)',  'rgba(255,255,0,1)',  'rgba(0,0,255,1)']
+                },
+            ]
+        },
+        options:{
+
+        }
+        });
+    }
+
+    </script>
+</body>
+</html>

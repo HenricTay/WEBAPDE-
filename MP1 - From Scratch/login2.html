@@ -1,5 +1,6 @@
 <html>
     <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
         <title>Krab Korp. Login</title>
     
         <style>
@@ -95,13 +96,30 @@
         <!-- Background Image -->
         <div class="login-box" >
             <h1 style="font-family: spongeBob; text-align:center">Login</h1>
-            <form style="font-family: Georgia" action="dashboard.html">
+            <form style="font-family: Georgia">
                 <p>Username</p>
-                <input type="text" name="username" placeholder="Enter Username">
+                <input type="text" id="username" name="username" placeholder="Enter Username">
                 <p>Password</p>
-                <input type="password" name="password" placeholder="Enter Password">
-                <input type="submit" name="submit" value="Login" style="border-radius: 10px;">
+                <input type="password" id="password" name="password" placeholder="Enter Password">
+                <input type="submit" id="submit" name="submit" value="Login" style="border-radius: 10px;">
             </form>
         </div>
+
+        <script> 
+            $(document).ready(function() {
+                document.getElementById('submit').onclick = function() { 
+                   var checkUsername = document.getElementById("username").value;
+                   var checkPassword = document.getElementById("password").value;
+
+                   if(checkUsername=="admin" && checkPassword =="p@ssword"){
+                    var url="dashboard.html";   
+                    window.open(url);
+                   }
+                   else
+                    alert("Wrong username and password, please try again!");
+
+                }
+            });
+        </script>
     </body>
 </html>
